@@ -12,6 +12,12 @@ internal class Program
 
 
         WriteLine("VS 2022");
+
+        WriteLine("Hello From Git From...");
+        WriteLine("Hello From Git From...");
+
+
+
         WriteLine("Press any key to end...");
         ReadKey();
     }
