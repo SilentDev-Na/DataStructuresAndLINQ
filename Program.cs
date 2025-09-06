@@ -10,7 +10,7 @@ internal class Program
     {
         await ListDataStructure.Run();
 
-        
+         
         
         WriteLine("Press any key to end...");
         ReadKey();
