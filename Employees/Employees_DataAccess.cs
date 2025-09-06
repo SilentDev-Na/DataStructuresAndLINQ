@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 using static System.Console;
 
 namespace DataStructuresAndLINQ.Employees
@@ -13,7 +14,7 @@ namespace DataStructuresAndLINQ.Employees
 
 
 
-        public static string ConnString = "Server = .; Database = C21_DB;User ID = sa ; Password = sa123456";
+        public static string ConnString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
         public static async Task<List<Employees>> GetEmps()
         {
