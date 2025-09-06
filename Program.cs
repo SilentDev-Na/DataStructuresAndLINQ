@@ -11,7 +11,7 @@ internal class Program
         await ListDataStructure.Run();
 
 
-
+        WriteLine("VS 2022");
         WriteLine("Press any key to end...");
         ReadKey();
     }
