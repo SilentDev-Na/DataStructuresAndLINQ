@@ -41,6 +41,10 @@ namespace DataStructuresAndLINQ.Employees.EmployeeHelper
             return employeesList.Min(emp => emp.Salary);
         }
 
+        public static List<decimal> AllSalaries(List<Employees> employeesList)
+        {
+            return employeesList.Select(emp => emp.Salary).ToList();
+        }
 
        public  static void SalaryBetweenMinMax(List<Employees> employees)
         {
@@ -60,12 +64,19 @@ namespace DataStructuresAndLINQ.Employees.EmployeeHelper
 
             var betweenSalaries = employees
                 .Where(e => e.Salary > minSalary && e.Salary < maxSalary)
-                .Select(e => e.Salary.ToString("C")).OrderByDescending(s => s);
+                .OrderByDescending(e => e.Salary);
 
-            WriteLine("Salaries Between Min and Max:{0} \n", string.Join("\n", employees.
-                Where(emp => emp.Salary > minSalary && emp.Salary < maxSalary).
-                Select(emp => emp.Salary.ToString("C")).
-                OrderByDescending(s => s)));
+            //WriteLine("Salaries Between Min and Max:{0} \n", string.Join("\n", employees.
+            //    Where(emp => emp.Salary > minSalary && emp.Salary < maxSalary).
+            //    Select(emp => emp.Salary.ToString("C")).
+            //    OrderByDescending(s => s)))
+
+            WriteLine("\nEmployees With Salary Between Min And Max:\n");
+
+            foreach (var emp in betweenSalaries)
+            {
+                WriteLine(emp);
+            }
            
         }
 
