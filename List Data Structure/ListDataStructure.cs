@@ -71,8 +71,6 @@ internal class ListDataStructure
 
 
 
-
-
         //_PrintTotalSalary (employees);
 
         //_PrintAverageSalary(employees);
