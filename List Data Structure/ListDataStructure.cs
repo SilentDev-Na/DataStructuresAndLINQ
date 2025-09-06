@@ -11,32 +11,37 @@ internal class ListDataStructure
 {
 
     //
-   
+   // public delegate void PrintAggregatesDelegate(List<Employees> employeesList);
 
     private static void _PrintTotalSalary(List<Employees> employeesList)
     {
-        WriteLine("Total Salary {0}\n", clsAggregate.TotalSalary(employeesList));
+        WriteLine("\nTotal Salary {0}\n", clsAggregate.TotalSalary(employeesList));
 
     }
 
-    private static void _PrintAverageSsalary(List<Employees> employeesList)
+    private static void _PrintAverageSalary(List<Employees> employeesList)
     {
-        WriteLine($"Avg Salary: {clsAggregate.AvgSalary(employeesList)}\n");
+        WriteLine($"\nAvg Salary: {clsAggregate.AvgSalary(employeesList)}\n");
     }
 
     private static void _PrintMaxSalary(List<Employees> employeesList)
     {
-        WriteLine("Maximum Salary: {0:C}\n", clsAggregate.MaximumSalary(employeesList));
+        WriteLine("\nMaximum Salary: {0:C}\n", clsAggregate.MaximumSalary(employeesList));
     }
 
     private static void _PrintMinSalary(List<Employees> employeesList)
     {
-        WriteLine("Minimum Salary: " + clsAggregate.MinimumSalary(employeesList).ToString("C") + "\n");    
+        WriteLine("\nMinimum Salary: " + clsAggregate.MinimumSalary(employeesList) + "\n\n");    
     }
 
     private static void _PrintSalaryBetweenMinMax(List<Employees> employeesList)
     {
         clsAggregate.SalaryBetweenMinMax(employeesList);
+    }
+
+    private static void _PrintAllSalaries(List<Employees> employeesList)
+    {
+        WriteLine("\nSalaries List:\n{0}", string.Join("\n", employeesList));
     }
     public static async Task Run()
     {
@@ -44,16 +49,45 @@ internal class ListDataStructure
 
         employees = await Employees_DataAccess.GetEmps();
 
-        _PrintTotalSalary (employees);
+        Action<List<Employees>> printAggregateAction = _PrintTotalSalary;
+        printAggregateAction += _PrintAverageSalary;
+        printAggregateAction += _PrintMaxSalary;
+        printAggregateAction += _PrintMinSalary;
+        printAggregateAction += _PrintSalaryBetweenMinMax;
 
-        _PrintAverageSsalary(employees);
+        printAggregateAction(employees);
 
-        _PrintMaxSalary(employees);
 
-        _PrintMinSalary(employees);
 
-        WriteLine("\nSalary Between Min And Max:\n");
-        _PrintSalaryBetweenMinMax(employees);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //_PrintTotalSalary (employees);
+
+        //_PrintAverageSalary(employees);
+
+        //_PrintMaxSalary(employees);
+
+        //_PrintMinSalary(employees);
+
+        //WriteLine("\n\n");
+        //_PrintAllSalaries(employees);
+
+        //WriteLine("\nSalary Between Min And Max:\n");
+        //_PrintSalaryBetweenMinMax(employees);
     }
 }
 
