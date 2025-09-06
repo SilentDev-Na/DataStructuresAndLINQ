@@ -41,6 +41,7 @@ internal class ListDataStructure
     public static async Task Run()
     {
         List<Employees> employees = new List<Employees>();
+
         employees = await Employees_DataAccess.GetEmps();
 
         _PrintTotalSalary (employees);
